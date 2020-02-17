@@ -123,7 +123,7 @@ static const struct udevice_id ti_sci_power_domain_of_match[] = {
 
 static struct power_domain_ops ti_sci_power_domain_ops = {
 	.request = ti_sci_power_domain_request,
-	.rfree = ti_sci_power_domain_free,
+	.free = ti_sci_power_domain_free,
 	.on = ti_sci_power_domain_on,
 	.off = ti_sci_power_domain_off,
 	.of_xlate = ti_sci_power_domain_of_xlate,
