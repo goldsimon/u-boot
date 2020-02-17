@@ -897,21 +897,6 @@ void malloc_simple_info(void);
 # define pvALLOc		dlpvalloc
 # define mALLINFo	dlmallinfo
 # define mALLOPt		dlmallopt
-
-/* Ensure that U-Boot actually uses these too */
-#define calloc dlcalloc
-#define free(ptr) dlfree(ptr)
-#define malloc(x) dlmalloc(x)
-#define memalign dlmemalign
-#define realloc dlrealloc
-#define valloc dlvalloc
-#define pvalloc dlpvalloc
-#define mallinfo() dlmallinfo()
-#define mallopt dlmallopt
-#define malloc_trim dlmalloc_trim
-#define malloc_usable_size dlmalloc_usable_size
-#define malloc_stats dlmalloc_stats
-
 # else /* USE_DL_PREFIX */
 # define cALLOc		calloc
 # define fREe		free
@@ -966,6 +951,32 @@ void    malloc_stats();
 int     mALLOPt();
 struct mallinfo mALLINFo();
 # endif
+
+# ifdef USE_DL_PREFIX
+/* Ensure that U-Boot actually uses the redefined functions: */
+static inline void *calloc(size_t n, size_t elem_size)
+{
+	return dlcalloc(n, elem_size);
+}
+static inline void free(void *ptr) { dlfree(ptr); }
+static inline void *malloc(size_t bytes) { return dlmalloc(bytes); }
+static inline void *memalign(size_t alignment, size_t bytes)
+{
+	return dlmemalign(alignment, bytes);
+}
+static inline void *realloc(void* oldmem, size_t bytes)
+{
+	return dlrealloc(oldmem, bytes);
+}
+static inline void *valloc(size_t bytes) { return dlvalloc(bytes); }
+static inline void *pvalloc(size_t bytes) { return dlpvalloc(bytes); }
+static inline struct mallinfo mallinfo(void) { return dlmallinfo(); }
+static inline int mallopt(int param_number, int value)
+{
+	return dlmallopt(param_number, value);
+}
+# endif
+
 #endif
 #pragma GCC visibility pop
 
