@@ -166,7 +166,7 @@ int reset_free(struct reset_ctl *reset_ctl)
 
 	debug("%s(reset_ctl=%p)\n", __func__, reset_ctl);
 
-	return ops->rfree(reset_ctl);
+	return ops->free(reset_ctl);
 }
 
 int reset_assert(struct reset_ctl *reset_ctl)
