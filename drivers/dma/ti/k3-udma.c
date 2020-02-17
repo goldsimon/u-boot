@@ -1553,7 +1553,7 @@ static int udma_request(struct dma *dma)
 	return 0;
 }
 
-static int udma_rfree(struct dma *dma)
+static int udma_free(struct dma *dma)
 {
 	struct udma_dev *ud = dev_get_priv(dma->dev);
 	struct udma_chan *uc;
@@ -1848,7 +1848,7 @@ static const struct dma_ops udma_ops = {
 	.transfer	= udma_transfer,
 	.of_xlate	= udma_of_xlate,
 	.request	= udma_request,
-	.rfree		= udma_rfree,
+	.free		= udma_free,
 	.enable		= udma_enable,
 	.disable	= udma_disable,
 	.send		= udma_send,

@@ -89,7 +89,7 @@ static int sandbox_dma_request(struct dma *dma)
 	return 0;
 }
 
-static int sandbox_dma_rfree(struct dma *dma)
+static int sandbox_dma_free(struct dma *dma)
 {
 	struct sandbox_dma_dev *ud = dev_get_priv(dma->dev);
 	struct sandbox_dma_chan *uc;
@@ -230,7 +230,7 @@ static const struct dma_ops sandbox_dma_ops = {
 	.transfer	= sandbox_dma_transfer,
 	.of_xlate	= sandbox_dma_of_xlate,
 	.request	= sandbox_dma_request,
-	.rfree		= sandbox_dma_rfree,
+	.free		= sandbox_dma_free,
 	.enable		= sandbox_dma_enable,
 	.disable	= sandbox_dma_disable,
 	.send		= sandbox_dma_send,
