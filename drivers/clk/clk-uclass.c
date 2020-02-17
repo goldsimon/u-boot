@@ -426,10 +426,10 @@ int clk_free(struct clk *clk)
 		return 0;
 	ops = clk_dev_ops(clk->dev);
 
-	if (!ops->rfree)
+	if (!ops->free)
 		return 0;
 
-	return ops->rfree(clk);
+	return ops->free(clk);
 }
 
 ulong clk_get_rate(struct clk *clk)
