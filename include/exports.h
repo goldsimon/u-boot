@@ -25,9 +25,11 @@ void puts(const char*);
 int printf(const char* fmt, ...);
 void install_hdlr(int, interrupt_handler_t, void*);
 void free_hdlr(int);
+#ifndef CONFIG_SANDBOX
 void *malloc(size_t);
 #if !CONFIG_IS_ENABLED(SYS_MALLOC_SIMPLE)
 void free(void*);
+#endif
 #endif
 void __udelay(unsigned long);
 unsigned long get_timer(unsigned long);
