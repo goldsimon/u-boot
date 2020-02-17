@@ -1180,10 +1180,10 @@ int mtd_ooblayout_free(struct mtd_info *mtd, int section,
 	if (!mtd || section < 0)
 		return -EINVAL;
 
-	if (!mtd->ooblayout || !mtd->ooblayout->rfree)
+	if (!mtd->ooblayout || !mtd->ooblayout->free)
 		return -ENOTSUPP;
 
-	return mtd->ooblayout->rfree(mtd, section, oobfree);
+	return mtd->ooblayout->free(mtd, section, oobfree);
 }
 EXPORT_SYMBOL_GPL(mtd_ooblayout_free);
 

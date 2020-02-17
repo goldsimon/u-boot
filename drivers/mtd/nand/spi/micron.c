@@ -64,7 +64,7 @@ static int mt29f2g01abagd_ooblayout_free(struct mtd_info *mtd, int section,
 
 static const struct mtd_ooblayout_ops mt29f2g01abagd_ooblayout = {
 	.ecc = mt29f2g01abagd_ooblayout_ecc,
-	.rfree = mt29f2g01abagd_ooblayout_free,
+	.free = mt29f2g01abagd_ooblayout_free,
 };
 
 static int mt29f2g01abagd_ecc_get_status(struct spinand_device *spinand,

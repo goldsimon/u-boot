@@ -48,7 +48,7 @@ static int mx35lfxge4ab_ooblayout_free(struct mtd_info *mtd, int section,
 
 static const struct mtd_ooblayout_ops mx35lfxge4ab_ooblayout = {
 	.ecc = mx35lfxge4ab_ooblayout_ecc,
-	.rfree = mx35lfxge4ab_ooblayout_free,
+	.free = mx35lfxge4ab_ooblayout_free,
 };
 
 static int mx35lf1ge4ab_get_eccsr(struct spinand_device *spinand, u8 *eccsr)
