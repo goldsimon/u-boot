@@ -154,7 +154,7 @@ static const struct udevice_id stm32_ipcc_ids[] = {
 
 struct mbox_ops stm32_ipcc_mbox_ops = {
 	.request = stm32_ipcc_request,
-	.rfree = stm32_ipcc_free,
+	.free = stm32_ipcc_free,
 	.send = stm32_ipcc_send,
 	.recv = stm32_ipcc_recv,
 };
